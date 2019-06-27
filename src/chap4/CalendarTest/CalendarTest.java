@@ -11,9 +11,21 @@ public class CalendarTest {
         DayOfWeek weekday = date.getDayOfWeek();    //月初第一天是周几 eg:SATURDAY
         int value = weekday.getValue();     //数字周几1-7 => 周一到周日
 
-        System.out.println(date);
-        System.out.println(weekday);
+        System.out.println("Mon Tue Wen Thu Fri Sat Sun");
+        for(int i  = 1; i < value; i ++) {
+            System.out.print("    ");
+        }
 
-
+        while(date.getMonthValue() == month)
+        {
+            System.out.printf("%3d", date.getDayOfMonth());
+            if(date.getDayOfMonth() == today)
+                System.out.print("*");
+            else
+                System.out.print(" ");
+            date = date.plusDays(1);
+            if(date.getDayOfWeek().getValue() == 1) System.out.println();
+        }
+        if(date.getDayOfWeek().getValue() != 1) System.out.println();
     }
 }
